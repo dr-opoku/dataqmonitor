@@ -1,0 +1,56 @@
+# Python bytecode and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging and generated builds
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Local tool caches and coverage output
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Local secrets; keep safe example configuration versioned
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Runtime data, logs, and generated reports
+*.log
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.sqlite3-journal
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+/outputs/
+/runtime/
+/local_data/
+/data/private/
+/data/raw/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Keep source, lockfiles, and synthetic examples/fixtures versioned.
