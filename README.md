@@ -4,6 +4,10 @@
 
 A small, local monitor for completeness, freshness, observed fetch availability, and rule consistency. It turns a supplied extract into a readable report with counts and explicit thresholds. No AI model, account, database, or network connection is needed for the core tool.
 
+### Related example
+
+[`resqmonitor`](https://github.com/dr-opoku/resqmonitor) looks at the next decision point: the quality and cost of completed, labelled results. The two repositories are independent examples, not a connected pipeline.
+
 ## Try it in one command
 
 Requires Python **3.11 or newer**. From this repository directory:
