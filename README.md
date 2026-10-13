@@ -6,7 +6,7 @@ A small, local monitor for completeness, freshness, observed fetch availability,
 
 ### Related example
 
-[`resqmonitor`](https://github.com/dr-opoku/resqmonitor) shows a complementary decision: whether supplied categorical outputs meet declared accuracy and cost expectations against reference labels. **Dataq examines inputs; Resq examines results.** Both keep observed values separate from adequately supported verdicts. They are independent examples; no software integration is required.
+[`resqmonitor`](https://github.com/dr-opoku/resqmonitor) shows a complementary decision: whether supplied categorical outputs meet declared accuracy and cost expectations against reference labels. **Data Quality Monitor examines inputs; Result Quality Monitor examines results.** Both keep observed values separate from adequately supported verdicts. They are independent examples; no software integration is required.
 
 ## What does the evidence support?
 

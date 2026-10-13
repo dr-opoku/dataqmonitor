@@ -1,4 +1,4 @@
-# Clarify evidence strength: Dataq Monitor
+# Clarify evidence strength: Data Quality Monitor
 
 **Decision to illustrate:** whether the supplied extract meets declared input expectations. Keep the example about a bounded handoff, rather than claiming that it establishes the truth of the data or the reliability of a whole service.
 
