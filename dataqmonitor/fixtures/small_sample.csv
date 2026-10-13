@@ -1,0 +1,2 @@
+record_id,source,updated_at,amount,status
+D001,synthetic_supplier,2026-10-13T09:00:00Z,125,ready

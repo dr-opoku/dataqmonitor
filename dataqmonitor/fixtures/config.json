@@ -32,5 +32,12 @@
     "freshness": 95,
     "availability": 95,
     "consistency": 95
-  }
+  },
+  "evidence_context": {
+    "purpose": "Illustrate declared acceptance criteria with synthetic observations.",
+    "population": "Bundled synthetic examples only.",
+    "sampling_method": "Constructed fixtures; not a random or production sample.",
+    "reference_basis": "Synthetic expected records and rules."
+  },
+  "min_availability_attempts": 4
 }

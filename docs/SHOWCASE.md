@@ -23,3 +23,7 @@ A consuming organization could schedule this CLI, map its source columns, add a 
 ## Scope discipline
 
 Only code written for this standalone demonstration and synthetic fixtures belong here. Private platform code, internal prompts, infrastructure details, and customer data are outside the showcase.
+
+## Evidence strength as a transferable skill
+
+The `small_sample` fixture deliberately shows 100% observed success with an unknown verdict. The capability being demonstrated is formulating a bounded decision, declaring the reference and denominator, and making insufficient evidence visible to humans and agents. See [evidence policy and domain examples](EVIDENCE_POLICY.md). Neither a sample count nor a green report independently validates a business deployment.

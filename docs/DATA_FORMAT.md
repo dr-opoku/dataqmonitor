@@ -38,6 +38,8 @@ A JSON object. Unknown and duplicate keys are rejected; numeric limits must be f
 | `timestamp_column` | null | Column used for freshness |
 | `max_age_hours` | 24 | Positive maximum age |
 | `future_tolerance_minutes` | 5 | Nonnegative tolerance for clock skew |
+| `min_availability_attempts` | null | Positive local minimum of valid in-window observations; null leaves availability verdict unknown |
+| `evidence_context` | {} | Optional purpose, population, sampling_method and reference_basis declarations; each string up to 2000 characters or null |
 | `availability_window_hours` | 720 | Positive lookback for fetch observations |
 | `numeric_ranges` | {} | Per-column `min` and/or `max`, inclusive |
 | `allowed_values` | {} | Per-column nonempty list of allowed strings |
@@ -49,6 +51,14 @@ Missing configured columns produce a finding and their cells fail the correspond
 
 ## Report contract
 
-`status` is `ok`, `attention`, or `unknown`. `checks` contains the four named measurements. Each value is a percentage or JSON null; its `evidence` gives counts and parameters. `findings` gives codes, messages, and optional aggregate details. `schema_version` is `1.0`. Consumers should tolerate additional fields and use names rather than positional order.
+`status` is `ok`, `attention`, or `unknown`. `checks` contains the four named measurements. Each value is a percentage or JSON null; its `evidence` gives counts and parameters. `findings` gives codes, messages, and optional aggregate details. `schema_version` is `2.0`. Consumers should tolerate additional fields and use names rather than positional order.
 
 JSON errors use `status: error` and `error: {code, message}`. They are printed on stdout even when `--output` was requested. Normal reports go to the explicit output path or stdout. The optional MCP SDK reports raised invalid-input exceptions through its normal tool-error mechanism.
+
+### Evidence contract 2.0
+
+Each check exposes `value`, `threshold_status`, `evidence_status`, `status`, `threshold` and `reason_codes`. See [field semantics](EVIDENCE_POLICY.md#reading-the-report) and the [normal-report JSON Schema](report.schema.json). The same typed shape is exposed as the optional MCP output schema. Error objects are a separate CLI contract; MCP tool errors are separate from normal reports.
+
+The report adds `decision`, `policy` and `provenance`. Read `decision.required_checks` for overall scope. Context is caller-declared and is not validated against the world. Reports expose supplied policy/context, column and category names; omit identifying details if they are unnecessary.
+
+Migration from 1.0: check names and observed values remain accessible, but verdict rules are stricter. A diagnostic without a configured target no longer silently receives `ok`. Missing evidence stays unknown; insufficient observations can still have a passing numeric threshold comparison. Check schema version explicitly before relying on these meanings.

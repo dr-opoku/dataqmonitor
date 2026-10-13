@@ -18,7 +18,7 @@ A duplicate can leave required cells complete while reducing expected-record cov
 
 ## Availability
 
-100 × successful attempts / valid attempts within the lookback. The window includes attempts whose age is between negative future tolerance and `availability_window_hours`. No attempts means unknown. Any malformed observation makes the score unknown, preventing silently optimistic exclusion. Outside-window valid observations are excluded and counted separately.
+100 × successful attempts / valid attempts within the lookback. The window includes attempts whose age is between negative future tolerance and `availability_window_hours`. No attempts means unknown. Below `min_availability_attempts`, show the measured percentage with an unknown verdict. If this minimum is null, evidence is `not_configured` and the verdict remains unknown. Any malformed observation makes the score unknown, preventing silently optimistic exclusion. Outside-window valid observations are excluded and counted separately.
 
 This is observed request success, not service uptime. Four demo attempts are four observations, not a service-level estimate.
 
@@ -30,6 +30,8 @@ No rules or no rows means unknown. This check covers declared rules; it cannot d
 
 ## Status
 
-A measured check is attention when it falls below its minimum; equality passes. Overall attention takes precedence if any check is attention or any finding exists. Otherwise any unknown check makes overall unknown. Overall is ok only when all four measurements are available and meet their expectations.
+A numeric threshold comparison is attention below its minimum; equality passes. A check verdict follows that comparison only when its evidence meets the local rules. Otherwise the verdict is unknown. Availability additionally requires a declared minimum observation count. Overall attention takes precedence if any check is attention or any finding exists. Otherwise any unknown check makes overall unknown. Overall is ok only when all four measurements are available and meet their expectations.
 
 The report exposes the denominators. Scores are neither a certification nor a substitute for a domain owner's judgment.
+
+See [evidence policy](EVIDENCE_POLICY.md) for separate threshold/evidence/verdict semantics and cross-domain examples. Numeric comparisons use unrounded values; report check values are rounded to six decimal places.

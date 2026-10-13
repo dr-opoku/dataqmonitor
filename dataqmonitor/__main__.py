@@ -54,7 +54,7 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, ValueError, ImportError, OverflowError) as exc:
         if getattr(args, "format", None) == "json":
             sys.stdout.write(as_json({
-                "schema_version": "1.0", "tool": "dataqmonitor", "status": "error",
+                "schema_version": "2.0", "tool": "dataqmonitor", "status": "error",
                 "error": {"code": "INVALID_INPUT", "message": str(exc)},
             }))
         else:

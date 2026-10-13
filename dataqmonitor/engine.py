@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
+from copy import deepcopy
 from datetime import datetime
 from typing import Any
 
 from ._support import (
-    check, finite_number, numeric_cell, overall, read_csv, reference_time,
+    assessment_metadata, check, evidence_context, finite_number, numeric_cell, overall, read_csv, reference_time,
     string_list, timestamp,
 )
 
@@ -19,6 +20,8 @@ DEFAULTS: dict[str, Any] = {
     "max_age_hours": 24,
     "future_tolerance_minutes": 5,
     "availability_window_hours": 720,
+    "min_availability_attempts": None,
+    "evidence_context": {},
     "numeric_ranges": {},
     "allowed_values": {},
     "thresholds": {
@@ -35,7 +38,11 @@ def configuration(supplied: dict[str, Any] | None) -> dict[str, Any]:
     extra = set(supplied) - set(DEFAULTS)
     if extra:
         raise ValueError(f"Unknown configuration keys: {', '.join(sorted(extra))}")
-    cfg = {**DEFAULTS, **supplied}
+    cfg = deepcopy({**DEFAULTS, **supplied})
+    cfg["evidence_context"] = evidence_context(cfg["evidence_context"])
+    minimum_attempts = cfg["min_availability_attempts"]
+    if minimum_attempts is not None and (isinstance(minimum_attempts, bool) or not isinstance(minimum_attempts, int) or minimum_attempts < 1):
+        raise ValueError("min_availability_attempts must be a positive integer, or null.")
     if not isinstance(cfg["dataset_name"], str) or not cfg["dataset_name"].strip():
         raise ValueError("dataset_name must be a nonempty string.")
     expected = cfg["expected_rows"]
@@ -80,6 +87,7 @@ def analyze(csv_text: str, config: dict[str, Any] | None = None, *,
             attempts_csv: str | None = None, at: str | datetime | None = None) -> dict[str, Any]:
     """Measure supplied rows and optional fetch attempts without retaining raw data."""
     cfg = configuration(config)
+    minimum_attempts = cfg["min_availability_attempts"]
     now = reference_time(at)
     header, rows = read_csv(csv_text)
     count = len(rows)
@@ -122,9 +130,11 @@ def analyze(csv_text: str, config: dict[str, Any] | None = None, *,
         "Completeness", min(components) if components else None, "%",
         {"rows": count, "observed_records": observed_records, "expected_rows": expected,
          "row_coverage_pct": row_pct, "required_cell_coverage_pct": cell_pct,
+         "present_required_cells": cell_present, "all_required_cells": cell_total,
          "missing_required_cells": cell_total - cell_present},
         "The weaker of expected-record coverage and required-cell coverage; no rows means unknown.",
         minimum=cfg["thresholds"]["completeness"],
+        evidence_issues=["RULE_NOT_CONFIGURED"] if not required and expected is None else None,
     )
 
     recent = invalid = future = stale = 0
@@ -149,13 +159,16 @@ def analyze(csv_text: str, config: dict[str, Any] | None = None, *,
         "Freshness", 100 * recent / count if column and count else None, "%",
         {"timestamp_column": column, "max_age_hours": cfg["max_age_hours"],
          "fresh_rows": recent, "stale_rows": stale, "invalid_timestamp_rows": invalid,
+         "all_rows": count,
          "future_timestamp_rows": future,
          "oldest_age_hours": max(ages) if ages else None},
         "Share of rows with a valid, recent timestamp; unconfigured timestamps or no rows means unknown.",
         minimum=cfg["thresholds"]["freshness"],
+        evidence_issues=["RULE_NOT_CONFIGURED"] if not column else None,
     )
 
     attempt_count = successes = invalid_attempts = outside_window = 0
+    observed_times = []
     if attempts_csv is not None:
         attempt_header, attempts = read_csv(attempts_csv)
         if not {"attempted_at", "success"} <= set(attempt_header):
@@ -175,19 +188,32 @@ def analyze(csv_text: str, config: dict[str, Any] | None = None, *,
                 outside_window += 1
                 continue
             attempt_count += 1
+            observed_times.append(timestamp(row["attempted_at"]))
             successes += success in {"true", "1"}
     if invalid_attempts:
         findings.append({
             "code": "INVALID_FETCH_LOG", "count": invalid_attempts,
             "message": "Invalid fetch observations prevent a reliable availability score.",
         })
+    availability_issues = []
+    if invalid_attempts:
+        availability_issues.append("INVALID_FETCH_LOG")
+    if not attempt_count:
+        availability_issues.append("NO_OBSERVATIONS")
+    if minimum_attempts is None:
+        availability_issues.append("RULE_NOT_CONFIGURED")
+    elif attempt_count and attempt_count < minimum_attempts:
+        availability_issues.append("BELOW_MIN_SAMPLE")
     checks["availability"] = check(
         "Availability", 100 * successes / attempt_count if attempt_count and not invalid_attempts else None, "%",
         {"attempts": attempt_count, "successful_attempts": successes,
          "invalid_attempts": invalid_attempts, "outside_window": outside_window,
-         "window_hours": cfg["availability_window_hours"]},
-        "Successful fetch attempts divided by valid attempts in the lookback window; no attempts means unknown.",
+         "window_hours": cfg["availability_window_hours"], "minimum_attempts": minimum_attempts,
+         "first_observed_at": min(observed_times).isoformat() if observed_times else None,
+         "last_observed_at": max(observed_times).isoformat() if observed_times else None},
+        "Observed fetch success; the declared minimum count is a local guardrail, not proof of service uptime.",
         minimum=cfg["thresholds"]["availability"],
+        evidence_issues=availability_issues,
     )
 
     invalid_rows = duplicate_rows | incomplete_key_rows
@@ -212,10 +238,11 @@ def analyze(csv_text: str, config: dict[str, Any] | None = None, *,
     has_rules = bool(keys or cfg["numeric_ranges"] or cfg["allowed_values"])
     checks["consistency"] = check(
         "Consistency", 100 * (count - len(invalid_rows)) / count if count and has_rules else None, "%",
-        {"rows_failing_rules": len(invalid_rows), "violations": violations,
+        {"rows_failing_rules": len(invalid_rows), "all_rows": count, "rows_passing_rules": count - len(invalid_rows) if has_rules else None, "violations": violations,
          "sample_record_numbers": [index + 1 for index in sorted(invalid_rows)[:10]]},
         "Share of rows satisfying every configured rule; no rows or no rules means unknown.",
         minimum=cfg["thresholds"]["consistency"],
+        evidence_issues=["RULE_NOT_CONFIGURED"] if not has_rules else None,
     )
     for name, result in checks.items():
         if result["status"] == "attention":
@@ -224,14 +251,18 @@ def analyze(csv_text: str, config: dict[str, Any] | None = None, *,
                 "message": f"{result['label']} is below its configured minimum.",
                 "threshold_pct": cfg["thresholds"][name],
             })
+    status = overall(list(checks.values()), findings)
     return {
-        "schema_version": "1.0", "tool": "dataqmonitor",
+        "schema_version": "2.0", "tool": "dataqmonitor",
         "dataset": cfg["dataset_name"], "evaluated_at": now.isoformat(),
-        "synthetic": False, "status": overall(list(checks.values()), findings),
+        "synthetic": False, "status": status,
+        **assessment_metadata(cfg, {"data": csv_text, "fetch_attempts": attempts_csv}, status, list(checks)),
         "summary": {"rows": count, "columns": len(header), "observed_records": observed_records},
         "checks": checks, "findings": findings,
         "notes": [
             "Thresholds express expectations; they do not prove that data represents reality.",
+            "Evidence sufficiency means the declared local rules are satisfied, not external validity or authority to act.",
+            "Input fingerprints identify supplied text; they do not verify source authenticity or completeness.",
             "Expected rows refer to this supplied extract. Filter the intended period before analysis.",
             "Availability measures supplied fetch observations, not time-based service uptime.",
             "Reports include aggregate evidence, column names and record numbers, not raw row values.",
