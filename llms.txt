@@ -1,0 +1,16 @@
+# dataqmonitor
+
+Local CSV quality checks. Python >=3.11. No runtime dependencies or model calls in the core.
+
+- Discover: README.md, showcase.json, docs/DATA_FORMAT.md, docs/METRICS.md.
+- Demo from checkout: python3 -m dataqmonitor demo --format json
+- Healthy/empty examples: add --scenario healthy or --scenario unknown.
+- Supplied data: python3 -m dataqmonitor check INPUT.csv --config CONFIG.json --attempts ATTEMPTS.csv --format json
+- Optional: omit attempts; availability then remains unknown. Use --at with a timezone-aware ISO timestamp for reproducibility.
+- Reports: schema_version 1.0; status ok/attention/unknown; four checks with value/unit/evidence; findings and scope notes.
+- Exit 0 means calculation completed, not quality passed. --require-ok enables exit 1 unless ok. Input/execution errors exit 2.
+- CSV limits: 5 MiB and 50,000 records each. JSON config: 5 MiB, unique known keys, finite numbers.
+- No observations or no required rule/evidence means unknown. Never convert unknown to a pass.
+- MCP optional extra: .[mcp]; serve uses local stdio. inspect_data accepts inline CSV/config, not paths. demonstrate_data_quality uses packaged synthetic fixtures.
+- Normal output goes to stdout or an explicit --output path. No telemetry, remote connectors, or automatic persistence.
+- Source visibility alone is not a license. Redistribution license is pending.

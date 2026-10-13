@@ -1,0 +1,13 @@
+record_id,source,updated_at,amount,status
+D001,synthetic_supplier,2026-10-13T09:00:00Z,125,ready
+D002,synthetic_supplier,2026-10-13T10:00:00Z,150,ready
+D003,synthetic_supplier,2026-10-13T11:00:00Z,175,ready
+D004,synthetic_supplier,2026-10-13T08:00:00Z,200,ready
+D005,synthetic_supplier,2026-10-13T09:00:00Z,225,ready
+D006,synthetic_supplier,2026-10-13T10:00:00Z,250,ready
+D007,synthetic_supplier,2026-10-13T11:00:00Z,275,ready
+D008,synthetic_supplier,2026-10-13T08:00:00Z,300,ready
+D009,synthetic_supplier,2026-10-13T09:00:00Z,325,ready
+D010,synthetic_supplier,2026-10-13T10:00:00Z,350,ready
+D011,synthetic_supplier,2026-10-13T11:00:00Z,375,ready
+D012,synthetic_supplier,2026-10-13T08:00:00Z,400,ready

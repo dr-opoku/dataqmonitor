@@ -1,0 +1,36 @@
+{
+  "dataset_name": "Synthetic supplier delivery feed",
+  "expected_rows": 12,
+  "required_columns": [
+    "record_id",
+    "source",
+    "updated_at",
+    "amount",
+    "status"
+  ],
+  "key_columns": [
+    "record_id"
+  ],
+  "timestamp_column": "updated_at",
+  "max_age_hours": 24,
+  "availability_window_hours": 720,
+  "numeric_ranges": {
+    "amount": {
+      "min": 0,
+      "max": 10000
+    }
+  },
+  "allowed_values": {
+    "status": [
+      "ready",
+      "pending",
+      "delayed"
+    ]
+  },
+  "thresholds": {
+    "completeness": 95,
+    "freshness": 95,
+    "availability": 95,
+    "consistency": 95
+  }
+}
