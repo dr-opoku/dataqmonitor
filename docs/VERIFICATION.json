@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "repository": "dataqmonitor",
-  "checked_at": "2026-10-15T06:52:03.811098+00:00",
+  "checked_at": "2026-10-15T06:56:33.038059+00:00",
   "python": "3.12.3",
   "tests": {
     "discovered": 32,
@@ -35,9 +35,26 @@
       "3.11",
       "3.13"
     ],
-    "github_execution": "not_yet_observed",
+    "github_execution": "success",
     "model_or_credentials_needed": false,
-    "token_contents": "read"
+    "token_contents": "read",
+    "observed_source_commit": "80becd666bd924f9df2ab874d7439f3e36109b99",
+    "run_url": "https://github.com/dr-opoku/dataqmonitor/actions/runs/38695257996",
+    "jobs": [
+      {
+        "name": "core (3.13)",
+        "conclusion": "success"
+      },
+      {
+        "name": "optional-mcp",
+        "conclusion": "success"
+      },
+      {
+        "name": "core (3.11)",
+        "conclusion": "success"
+      }
+    ],
+    "record_scope": "Observed run at the stated source commit; later documentation-only commits trigger separate runs."
   },
   "pre_edit_stress_review": {
     "passed": true,
@@ -67,5 +84,12 @@
     "sdist_tests_skipped": 4,
     "sdist_skips_reason": "Optional MCP SDK intentionally absent from clean core environment",
     "sdist_saved_report_reproduction": "passed"
+  },
+  "additional_python311_core": {
+    "python": "3.11.17",
+    "tests": 32,
+    "passed": 28,
+    "skipped_optional_mcp": 4,
+    "saved_reports_reproduce": true
   }
 }
