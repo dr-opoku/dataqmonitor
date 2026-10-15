@@ -9,8 +9,8 @@
   "actions": [
     {
       "id": "case",
-      "action": "Turn the existing broken/healthy synthetic supplier fixtures into a before/after case with saved JSON/text/HTML reports, exact counts, independent expected-population rationale, error causes, owner, repair and decision consequence.",
-      "acceptance": "Expected 12 deliveries comes from a fictional upstream manifest fixed before observing either CSV. No claim that a count verifies which 12 identities arrived; explain need for identity reconciliation and real operational sampling.",
+      "action": "Turn the existing broken/healthy synthetic supplier fixtures into a before/after case with saved JSON/text/HTML reports, exact counts, explicitly fictional expected-population rationale, error causes, owner, repair and decision consequence.",
+      "acceptance": "The existing configured expectation of 12 deliveries is explained by a fictional manifest added after the CSV fixtures. Do not claim independent or prospective establishment. Explain upstream ownership before real assessment, and count-versus-identity limitations.",
       "status": "implemented_and_locally_verified"
     },
     {
@@ -59,10 +59,16 @@
       "id": "reviewed_repairs",
       "action": [
         "Protect input/config/attempt files from output collisions, including symbolic and hard links.",
-        "Add deterministic supplier case and independent fictional ID manifest; explain count-versus-identity limitation.",
+        "Add deterministic supplier case and explicitly fictional ID manifest documenting an existing premise; explain count-versus-identity limitation.",
         "Provide defensive consumer, short entry, linked navigation and reproducible tests."
       ],
       "acceptance": "Regression tests reproduce the original defects and exercise the repaired behavior; all input files remain byte-identical after refused collisions.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "second_review_closure",
+      "action": "Resolve verified AGY/Claude findings in the adjudication table, add focused regressions, regenerate affected synthetic reports and verify core, optional MCP and packaging.",
+      "acceptance": "No missing-cost-as-zero evidence, no extra human-output rounding, bounded decoder input errors, accurate fictional chronology and recorded rejected suggestions. Keep all rights unchanged.",
       "status": "implemented_and_locally_verified"
     }
   ],
@@ -110,5 +116,96 @@
       "AGY was requested with selector gemini-3.8-flash-high; no independent attestation of the backend model."
     ]
   },
-  "verification": "docs/VERIFICATION.json"
+  "verification": "docs/VERIFICATION.json",
+  "followup_stress_test": {
+    "date": "2026-10-15T09:06:04.055004+00:00",
+    "baseline_commit": "4672f1273efb63fd8e3bbb077d7d6fae973f3c62",
+    "pre_edit_gate": "passed",
+    "tracked_files_unchanged_at_gate": true,
+    "reviews": {
+      "agy": {
+        "exit_code": 0,
+        "requested_model": "gemini-3.8-flash-high",
+        "started_at": "2026-10-15T08:57:51.700472+00:00",
+        "finished_at": "2026-10-15T09:01:51.790807+00:00",
+        "repository_unchanged": true,
+        "scope": "Read-only static source/plan review; test source and saved example reports omitted; no execution or independent backend attestation."
+      },
+      "claude": {
+        "exit_code": 0,
+        "requested_model": "claude-sonnet-5-5",
+        "provider_interface": "claude",
+        "started_at": "2026-10-15T08:57:10.677589+00:00",
+        "finished_at": "2026-10-15T08:58:30.282125+00:00",
+        "repository_unchanged": true,
+        "filesystem_protection": "All showcase directories mounted read-only.",
+        "scope": "Static supplied-source review; model tools disabled by request and Claude tool set empty; no independent backend attestation."
+      }
+    },
+    "adjudication": [
+      {
+        "id": "C1",
+        "finding": "Medium: manifest described as prospectively independent.",
+        "disposition": "Accepted with corrected chronology",
+        "reason": "The 12-row configuration and CSV fixtures predate the explanatory manifest. CASE_STUDY, manifest and current plan now say so. The identity-reconciliation limitation stays explicit.",
+        "verification": "tests/test_case_study.py"
+      },
+      {
+        "id": "C2",
+        "finding": "Low: current review decisions not inspectable in the repository.",
+        "disposition": "Accepted",
+        "reason": "Append this per-finding record and current plan; preserve the earlier review as history.",
+        "verification": "docs/REVIEW.md; docs/ACTION_PLAN.json"
+      },
+      {
+        "id": "C3",
+        "finding": "Low: own-data command uses synthetic packaged policy.",
+        "disposition": "Accepted",
+        "reason": "Point to an edited local copy and name the keys, including evidence_context.",
+        "verification": "README.md, Use your own data"
+      },
+      {
+        "id": "C4 / G1",
+        "finding": "Low: unreachable consumer branch and unused Wilson vocabulary.",
+        "disposition": "Accepted / bounded",
+        "reason": "Remove the constant alternative branch. Document that current checks emit only point_estimate; no new statistical metric or contract break.",
+        "verification": "tests/test_stress.py; tests/test_review_regressions.py"
+      },
+      {
+        "id": "C5",
+        "finding": "Low: unspecified operating-system support.",
+        "disposition": "Bounded",
+        "reason": "State verified Linux and POSIX commands; Windows unverified. Do not claim portability based solely on standard-library use.",
+        "verification": "README.md"
+      },
+      {
+        "id": "G2",
+        "finding": "Low: empty output path allegedly raises an unhandled OSError.",
+        "disposition": "Rejected",
+        "reason": "Reproduced against baseline: argparse creates Path(\".\"); the existing OSError handler returns structured INVALID_INPUT and exit 2. Whitespace is a valid filename on the verified platform. No speculative validation patch.",
+        "verification": "Pre-edit CLI reproduction; dataqmonitor/__main__.py"
+      },
+      {
+        "id": "G3",
+        "finding": "Low: two-decimal human display can obscure a threshold.",
+        "disposition": "Accepted with stronger remedy",
+        "reason": "Retain the six-decimal JSON check value in text/HTML, rather than merely documenting extra rounding. No threshold change.",
+        "verification": "tests/test_review_regressions.py"
+      },
+      {
+        "id": "X1",
+        "finding": "Confirmed in sibling review: excessively nested config escapes the input-error contract.",
+        "disposition": "Accepted after local reproduction",
+        "reason": "Reproduced RecursionError on a 100,000-level, sub-limit JSON object. Convert only decoder RecursionError to ValueError.",
+        "verification": "tests/test_review_regressions.py"
+      }
+    ],
+    "limits": [
+      "Two static source/plan reviews, not independently executed tests.",
+      "AGY packet omitted tests and saved example JSON; Claude packet included test source, not test execution.",
+      "Requested model selectors are recorded; backend identity is not independently attested.",
+      "An initial AGY invocation failed before model execution; corrected invocation completed. No truncated final response in this round.",
+      "Targeted reproductions and verification were performed separately by the implementing agent."
+    ]
+  }
 }

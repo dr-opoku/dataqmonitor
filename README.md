@@ -6,13 +6,13 @@ A small, local monitor for completeness, freshness, observed fetch availability,
 
 ## Try it in one command
 
-Requires Python **3.11 or newer**. From this repository directory:
+Requires Python **3.11 or newer**. Verified on Linux; the installation commands below use POSIX paths. Windows behavior has not been verified. From this repository directory:
 
 ```bash
 python3 -m dataqmonitor demo
 ```
 
-The default synthetic example reports `attention`: seven distinct records against an expectation of twelve, plus stale and invalid observations. [Read the saved text report](examples/broken.txt) immediately, or follow the [supplier-feed case study](docs/CASE_STUDY.md) with its independent fictional delivery manifest.
+The default synthetic example reports `attention`: seven distinct records against an expectation of twelve, plus stale and invalid observations. [Read the saved text report](examples/broken.txt) immediately, or follow the [supplier-feed case study](docs/CASE_STUDY.md) with its explicitly fictional delivery manifest.
 
 The default demo contains missing records, stale timestamps, a duplicate key, invalid values, and failed fetches. All data is synthetic. The demo uses **13 October 2026, 12:00 UTC** as its reference time, so results do not age with the calendar.
 
@@ -49,11 +49,11 @@ Reports separate **observed value**, **threshold comparison** and **evidence ade
 
 ## Use your own data
 
-Copy the bundled configuration and change the expectations for your extract:
+Copy the bundled configuration to `local_data/config.json`, then edit it for your extract. Replace `dataset_name`, `expected_rows`, `required_columns`, `key_columns`, `timestamp_column`, `rules` and `evidence_context`; the packaged values describe the synthetic supplier example, not your data. Adapt the remaining thresholds and fetch-window settings as needed:
 
 ```bash
 python3 -m dataqmonitor check local_data/feed.csv \
-  --config dataqmonitor/fixtures/config.json \
+  --config local_data/config.json \
   --attempts local_data/fetch-attempts.csv \
   --format html --output outputs/feed-report.html
 ```

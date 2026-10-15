@@ -35,3 +35,9 @@ A numeric threshold comparison is attention below its minimum; equality passes. 
 The report exposes the denominators. Scores are neither a certification nor a substitute for a domain owner's judgment.
 
 See [evidence policy](EVIDENCE_POLICY.md) for separate threshold/evidence/verdict semantics and cross-domain examples. Numeric comparisons use unrounded values; report check values are rounded to six decimal places.
+
+## Display precision
+
+Text and HTML retain the check value recorded in JSON (rounded to six decimal places), without further two-decimal rounding. Threshold comparisons use the unrounded measurement; very near a threshold the displayed value can still coincide with the limit. Inspect threshold status and reason codes rather than inferring the verdict from presentation alone.
+
+All current Data Quality Monitor checks use `threshold.basis="point_estimate"`. The shared-shaped report vocabulary also permits `wilson_lower_bound`, but this analyzer never emits it and offers no Wilson-bound configuration.

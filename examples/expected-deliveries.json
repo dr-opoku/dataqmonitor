@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "purpose": "Fictional upstream delivery contract, declared independently of the supplied before/after observations. Not a real manifest or source verification.",
+  "purpose": "Fictional delivery requirement added after the existing CSV fixtures to explain their configured 12-record expectation. A declared scenario premise, not an independently established manifest or source verification.",
   "expected_record_ids": [
     "D001",
     "D002",

@@ -4,25 +4,25 @@ Decision: criteria_met for supplied observations; no action authorized.
 SYNTHETIC DEMO: fixed reference time; no real customer data.
 Sample: {"rows": 12, "columns": 5, "observed_records": 12}
 
-Completeness: 100.00 % [ok]
+Completeness: 100.0 % [ok]
   Threshold: ok; evidence: sufficient
   Reasons: None under the declared policy
   Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 100.0}
   The weaker of expected-record coverage and required-cell coverage; no rows means unknown.
   Evidence: {"rows": 12, "observed_records": 12, "expected_rows": 12, "row_coverage_pct": 100, "required_cell_coverage_pct": 100.0, "present_required_cells": 60, "all_required_cells": 60, "missing_required_cells": 0}
-Freshness: 100.00 % [ok]
+Freshness: 100.0 % [ok]
   Threshold: ok; evidence: sufficient
   Reasons: None under the declared policy
   Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 100.0}
   Share of rows with a valid, recent timestamp; unconfigured timestamps or no rows means unknown.
   Evidence: {"timestamp_column": "updated_at", "max_age_hours": 24, "fresh_rows": 12, "stale_rows": 0, "invalid_timestamp_rows": 0, "all_rows": 12, "future_timestamp_rows": 0, "oldest_age_hours": 4.0}
-Availability: 100.00 % [ok]
+Availability: 100.0 % [ok]
   Threshold: ok; evidence: sufficient
   Reasons: None under the declared policy
   Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 100.0}
   Observed fetch success; the declared minimum count is a local guardrail, not proof of service uptime.
   Evidence: {"attempts": 4, "successful_attempts": 4, "invalid_attempts": 0, "outside_window": 0, "window_hours": 720, "minimum_attempts": 4, "first_observed_at": "2026-10-13T08:00:00+00:00", "last_observed_at": "2026-10-13T11:00:00+00:00"}
-Consistency: 100.00 % [ok]
+Consistency: 100.0 % [ok]
   Threshold: ok; evidence: sufficient
   Reasons: None under the declared policy
   Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 100.0}

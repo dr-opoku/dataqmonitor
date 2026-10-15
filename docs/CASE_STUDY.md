@@ -2,11 +2,11 @@
 
 **Everything in this case is synthetic.** The two CSVs are constructed before/after states, not a recorded production incident or evidence that a repair was executed.
 
-## The requirement before inspecting the extract
+## The declared fictional requirement
 
-A fictional supplier contract expects IDs D001–D012, required fields, timestamps no older than 24 hours, amounts between 0 and 10,000 and a declared status vocabulary. The independently specified [fictional manifest](../examples/expected-deliveries.json) supplies the expectation of **12 deliveries**. That denominator is a business requirement, not the observed CSV row count. The availability example requires four observations in its declared lookback window.
+A fictional supplier contract expects IDs D001–D012, required fields, timestamps no older than 24 hours, amounts between 0 and 10,000 and a declared status vocabulary. The [fictional manifest](../examples/expected-deliveries.json) supplies the expectation of **12 deliveries**. That denominator is a business requirement, not the observed CSV row count. The availability example requires four observations in its declared lookback window.
 
-This manifest documents how a real denominator should be established; it is authored for the example and does not independently validate a real source. The reference time is 13 October 2026, 12:00 UTC. No historical operating period is inferred from that timestamp.
+The manifest was added after the existing CSV fixtures to explain the scenario's already configured expectation; it is not evidence of an independently established or prospectively frozen requirement. Its 12-ID population is a declared fictional premise. In a real assignment, an accountable upstream owner should establish and version that expectation before assessing the delivery. The manifest does not independently validate a real source. The reference time is 13 October 2026, 12:00 UTC. No historical operating period is inferred from that timestamp.
 
 ## Observed before and constructed after
 

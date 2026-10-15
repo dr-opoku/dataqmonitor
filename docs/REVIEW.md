@@ -43,3 +43,22 @@ The report producer compares unrounded measurements and displays six decimals. T
 See [verification results](VERIFICATION.json), [the action plan](ACTION_PLAN.json) and [project status](PROJECT_STATUS.md). Automated tests and saved-report replay check the implementation and its declared examples. They cannot establish label truth, representative sampling, model authenticity or deployment suitability.
 
 Licensing, contribution rights, visibility and release remain owner decisions. They are prerequisites for broad reuse, not code defects to resolve by silently assigning a license.
+
+## Second pre-edit review — 15 October 2026
+
+Before this round of repository edits, baseline tests passed and tracked-file hashes matched the stated baseline commit. Two complete static reviews were obtained: **G = AGY `gemini-3.8-flash-high`**, **C = Claude Code `claude-sonnet-5-5`**. These are requested selectors, not independent backend attestations. Claude received source and tests; AGY omitted test source and saved example JSON to fit its interface. Neither reviewer executed tests. An initial AGY CLI invocation failed before model execution; its corrected invocation completed. Neither final review was truncated.
+
+Local runtime counterexamples were recorded before repairs. Model findings are suggestions checked against actual behavior, not automatically accepted evidence. X denotes a finding transferred from the sibling review and reproduced here. The earlier sections above remain historical.
+
+| ID | Reviewer finding | Decision | Source check and reason | Verification |
+| --- | --- | --- | --- | --- |
+| C1 | Medium: manifest described as prospectively independent. | Accepted with corrected chronology | The 12-row configuration and CSV fixtures predate the explanatory manifest. CASE_STUDY, manifest and current plan now say so. The identity-reconciliation limitation stays explicit. | `tests/test_case_study.py` |
+| C2 | Low: current review decisions not inspectable in the repository. | Accepted | Append this per-finding record and current plan; preserve the earlier review as history. | `docs/REVIEW.md; docs/ACTION_PLAN.json` |
+| C3 | Low: own-data command uses synthetic packaged policy. | Accepted | Point to an edited local copy and name the keys, including evidence_context. | `README.md, Use your own data` |
+| C4 / G1 | Low: unreachable consumer branch and unused Wilson vocabulary. | Accepted / bounded | Remove the constant alternative branch. Document that current checks emit only point_estimate; no new statistical metric or contract break. | `tests/test_stress.py; tests/test_review_regressions.py` |
+| C5 | Low: unspecified operating-system support. | Bounded | State verified Linux and POSIX commands; Windows unverified. Do not claim portability based solely on standard-library use. | `README.md` |
+| G2 | Low: empty output path allegedly raises an unhandled OSError. | Rejected | Reproduced against baseline: argparse creates Path("."); the existing OSError handler returns structured INVALID_INPUT and exit 2. Whitespace is a valid filename on the verified platform. No speculative validation patch. | `Pre-edit CLI reproduction; dataqmonitor/__main__.py` |
+| G3 | Low: two-decimal human display can obscure a threshold. | Accepted with stronger remedy | Retain the six-decimal JSON check value in text/HTML, rather than merely documenting extra rounding. No threshold change. | `tests/test_review_regressions.py` |
+| X1 | Confirmed in sibling review: excessively nested config escapes the input-error contract. | Accepted after local reproduction | Reproduced RecursionError on a 100,000-level, sub-limit JSON object. Convert only decoder RecursionError to ValueError. | `tests/test_review_regressions.py` |
+
+Full prompts, responses, failed invocations and pre-edit hashes are retained in the private audit workspace; this table contains the public decision trail without host details. See [the current action plan](ACTION_PLAN.json) and [verification](VERIFICATION.json). Review and tests establish bounded example behavior, not independent data truth, enterprise outcomes or license rights.

@@ -4,25 +4,25 @@ Decision: criteria_not_met for supplied observations; no action authorized.
 SYNTHETIC DEMO: fixed reference time; no real customer data.
 Sample: {"rows": 8, "columns": 5, "observed_records": 7}
 
-Completeness: 58.33 % [attention]
+Completeness: 58.333333 % [attention]
   Threshold: attention; evidence: sufficient
   Reasons: THRESHOLD_NOT_MET
   Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 58.333333}
   The weaker of expected-record coverage and required-cell coverage; no rows means unknown.
   Evidence: {"rows": 8, "observed_records": 7, "expected_rows": 12, "row_coverage_pct": 58.333333333333336, "required_cell_coverage_pct": 97.5, "present_required_cells": 39, "all_required_cells": 40, "missing_required_cells": 1}
-Freshness: 62.50 % [attention]
+Freshness: 62.5 % [attention]
   Threshold: attention; evidence: sufficient
   Reasons: THRESHOLD_NOT_MET
   Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 62.5}
   Share of rows with a valid, recent timestamp; unconfigured timestamps or no rows means unknown.
   Evidence: {"timestamp_column": "updated_at", "max_age_hours": 24, "fresh_rows": 5, "stale_rows": 1, "invalid_timestamp_rows": 1, "all_rows": 8, "future_timestamp_rows": 1, "oldest_age_hours": 74.0}
-Availability: 50.00 % [attention]
+Availability: 50.0 % [attention]
   Threshold: attention; evidence: sufficient
   Reasons: THRESHOLD_NOT_MET
   Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 50.0}
   Observed fetch success; the declared minimum count is a local guardrail, not proof of service uptime.
   Evidence: {"attempts": 4, "successful_attempts": 2, "invalid_attempts": 0, "outside_window": 0, "window_hours": 720, "minimum_attempts": 4, "first_observed_at": "2026-10-13T08:00:00+00:00", "last_observed_at": "2026-10-13T11:00:00+00:00"}
-Consistency: 62.50 % [attention]
+Consistency: 62.5 % [attention]
   Threshold: attention; evidence: sufficient
   Reasons: THRESHOLD_NOT_MET
   Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 62.5}
