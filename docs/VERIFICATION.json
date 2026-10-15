@@ -35,9 +35,27 @@
       "3.11",
       "3.13"
     ],
-    "github_execution": "not_yet_observed",
+    "github_execution": "success",
     "model_or_credentials_needed": false,
-    "token_contents": "read"
+    "token_contents": "read",
+    "observed_at": "2026-10-15T09:11:57.138605+00:00",
+    "observed_source_commit": "a00316af0d1e35341f4d1c8df681fff7faf4bcd2",
+    "run_url": "https://github.com/dr-opoku/dataqmonitor/actions/runs/38711052170",
+    "jobs": [
+      {
+        "name": "optional-mcp",
+        "conclusion": "success"
+      },
+      {
+        "name": "core (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "name": "core (3.13)",
+        "conclusion": "success"
+      }
+    ],
+    "record_scope": "Observed successful run at the stated implementation commit. This subsequent verification-record-only commit triggers its own checks."
   },
   "pre_edit_stress_review": {
     "passed": true,
