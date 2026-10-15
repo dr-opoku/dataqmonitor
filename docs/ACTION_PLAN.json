@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "repository": "dataqmonitor",
+  "baseline_commit": "c34ed58fb3057df7c4a482cbd801fd6602605654",
+  "date": "2026-10-15",
+  "state": "implemented_and_locally_verified",
+  "goal": "A small, honest, easy-to-inspect professional reference for coordinating evidence-based AI and organizational work, without disclosing private platform IP.",
+  "profile_context": "The owner seeks cross-corporate project/program and transformation assignments including AI. These repositories can demonstrate concrete technical judgment and evidence discipline, not establish unverified CV achievements.",
+  "actions": [
+    {
+      "id": "case",
+      "action": "Turn the existing broken/healthy synthetic supplier fixtures into a before/after case with saved JSON/text/HTML reports, exact counts, independent expected-population rationale, error causes, owner, repair and decision consequence.",
+      "acceptance": "Expected 12 deliveries comes from a fictional upstream manifest fixed before observing either CSV. No claim that a count verifies which 12 identities arrived; explain need for identity reconciliation and real operational sampling.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "regressions",
+      "action": "Stress missing/invalid/future timestamps, duplicate IDs, unconfigured rules, single fetch, HTML escaping, CLI invalid input and output/input path collisions; fix demonstrated defects and preserve existing semantics.",
+      "acceptance": "A 100% one-attempt fetch stays unknown; no input may be overwritten by its own output path, including symlink aliases.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "entry",
+      "action": "Put one safe offline command and a concise expected result near the top; link a readable saved report and a reproducible case study.",
+      "acceptance": "A reader can understand purpose, run command, expected verdict and limits in the first screen.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "consumer",
+      "action": "Add a runnable standard-library JSON report consumer with fail-closed structural checks, distinct error/negative/unknown/sample-met outcomes, tests and an explicit no-action-authority output.",
+      "acceptance": "Exit 0 only for structurally consistent declared sample eligibility, exit 1 for negative/unknown, exit 2 for invalid/error reports. No exit status grants action authority; no source authenticity or underlying-data recomputation is performed.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "navigation",
+      "action": "Use Markdown links in llms.txt, consistent license-pending wording and a prominent modest cross-reference to all three independent showcases; maintain AGENTS.md and project-local showcase.json.",
+      "acceptance": "No invented interoperability standard, purchase permission, software integration or production claim.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "verification",
+      "action": "Add offline CI for Python 3.11 and 3.13, tests for core/CLI/consumer and deterministic example reproduction. Keep optional MCP tests separate and visible.",
+      "acceptance": "No model or credentials required in default CI; read-only token permissions; local test counts and skipped tests reported honestly.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "professional",
+      "action": "Describe the demonstrated work: requirements, explicit decision rules, evidence boundaries, implementation and responsible next steps. Add short support/contribution/security guidance and maintenance scope.",
+      "acceptance": "No unverified CV achievements, customer outcomes, enterprise readiness or commercial demand claims.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "rights",
+      "action": "Keep license unselected; document the owner decisions needed for noncommercial/research/procurement use and future commercial terms. Do not create a LICENSE, checkout, release, price or visibility change.",
+      "acceptance": "No implicit free-use or redistribution grant and no claim that source availability is open source.",
+      "status": "documented_owner_decision_pending"
+    },
+    {
+      "id": "reviewed_repairs",
+      "action": [
+        "Protect input/config/attempt files from output collisions, including symbolic and hard links.",
+        "Add deterministic supplier case and independent fictional ID manifest; explain count-versus-identity limitation.",
+        "Provide defensive consumer, short entry, linked navigation and reproducible tests."
+      ],
+      "acceptance": "Regression tests reproduce the original defects and exercise the repaired behavior; all input files remain byte-identical after refused collisions.",
+      "status": "implemented_and_locally_verified"
+    }
+  ],
+  "pre_edit_gate": "Record baseline tests and one independent Gemini 3.8 Flash review of this plan and supplied source before repository edits. Revise actions against concrete findings.",
+  "publication_gate": [
+    "Owner-selected license and contribution rights",
+    "Owner-approved visibility and release",
+    "Separate evidence for any real customer, commercial or production claim"
+  ],
+  "reference_sources": [
+    "https://github.com/promptfoo/promptfoo",
+    "https://github.com/evidentlyai/evidently",
+    "https://github.com/steipete/oracle",
+    "https://agents.md/"
+  ],
+  "reference_interpretation": "Adopt visible examples, short reproducible entry points, tests and explicit agent guidance. These sources do not prove why users award stars or validate this owner's competence.",
+  "stress_test_decision": {
+    "repository": "dataqmonitor",
+    "decided_at": "2026-10-15T06:35:13.130025+00:00",
+    "pre_edit_gate": "passed",
+    "repository_unchanged_at_gate": true,
+    "baseline_commit": "c34ed58fb3057df7c4a482cbd801fd6602605654",
+    "review": {
+      "requested_model": "gemini-3.8-flash-high",
+      "started_at": "2026-10-15T06:27:07.552400+00:00",
+      "finished_at": "2026-10-15T06:30:42.102271+00:00",
+      "exit_code": 0,
+      "repository_files_unchanged": true,
+      "filesystem_protection": "All three repository directories mounted read-only for reviewer process.",
+      "review_scope": "One plan/source-packet review, not execution or independent source authentication."
+    },
+    "accepted": [
+      "Protect input/config/attempt files from output collisions, including symbolic and hard links.",
+      "Add deterministic supplier case and independent fictional ID manifest; explain count-versus-identity limitation.",
+      "Provide defensive consumer, short entry, linked navigation and reproducible tests."
+    ],
+    "rejected_or_bounded": [
+      "No global ban on the approved third repository name llm-eval: naming restrictions apply to the two monitor names.",
+      "No empty-data repair: _support.check already supplies NO_OBSERVATIONS for absent values.",
+      "No blanket TypeError/KeyError catch: timestamp/CSV validation already rejects the cited inputs.",
+      "No new evaluation permission: rights remain unselected; wording must not grant a license."
+    ],
+    "limits": [
+      "One source-packet plan review; reviewer did not execute tests. Helper implementations and some fixtures were outside the packet; findings were checked against the actual source.",
+      "AGY was requested with selector gemini-3.8-flash-high; no independent attestation of the backend model."
+    ]
+  },
+  "verification": "docs/VERIFICATION.json"
+}

@@ -1,0 +1,20 @@
+{
+  "synthetic": true,
+  "purpose": "Fictional upstream delivery contract, declared independently of the supplied before/after observations. Not a real manifest or source verification.",
+  "expected_record_ids": [
+    "D001",
+    "D002",
+    "D003",
+    "D004",
+    "D005",
+    "D006",
+    "D007",
+    "D008",
+    "D009",
+    "D010",
+    "D011",
+    "D012"
+  ],
+  "required_count": 12,
+  "reference_time": "2026-10-13T12:00:00Z"
+}

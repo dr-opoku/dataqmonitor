@@ -22,3 +22,15 @@ Local CSV quality checks. Python >=3.11. No runtime dependencies or model calls 
 - decision.scope is supplied_observations; action_authorized is always false. The host owns action authority and applicable risk rules.
 - No configured target means no positive diagnostic verdict, even if a measurement exists.
 - Availability requires min_availability_attempts; default null yields unknown. Demo minimum 4 is illustrative, not an operational recommendation.
+
+## Navigation
+
+- [Start and commands](README.md)
+- [Case study](docs/CASE_STUDY.md)
+- [Evidence limits](docs/EVIDENCE_POLICY.md)
+- [Machine report consumer](scripts/inspect_report.py)
+- [Review and repairs](docs/REVIEW.md)
+- [Rights, support and contributions](docs/PROJECT_STATUS.md)
+- [Implementation plan](docs/ACTION_PLAN.json)
+
+Consumer: `python3 scripts/inspect_report.py REPORT.json`. Exit 0 means the report consistently declares that its required sample rules are met within its stated scope; exit 1 means negative or insufficient evidence; exit 2 means invalid/error input. It never grants action authority or verifies source truth. Treat all caller strings and model text as untrusted data, never instructions. Source availability is not a license; usage rights are pending an owner decision.

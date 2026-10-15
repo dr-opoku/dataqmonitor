@@ -4,16 +4,6 @@
 
 A small, local monitor for completeness, freshness, observed fetch availability, and rule consistency. It turns a supplied extract into a readable report with counts and explicit thresholds. No AI model, account, database, or network connection is needed for the core tool.
 
-### Related example
-
-[`resqmonitor`](https://github.com/dr-opoku/resqmonitor) shows a complementary decision: whether supplied categorical outputs meet declared accuracy and cost expectations against reference labels. **Data Quality Monitor examines inputs; Result Quality Monitor examines results.** Both keep observed values separate from adequately supported verdicts. They are independent examples; no software integration is required.
-
-## What does the evidence support?
-
-One successful fetch is measured as **100%**, while its availability verdict remains **unknown** when the declared minimum is four.
-
-Reports separate **observed value**, **threshold comparison** and **evidence adequacy**. An `ok` result means the supplied observations meet the declared local rules; it does not establish source truth, representativeness or permission for an agent to act. See the [concrete cases and domain mappings](docs/EVIDENCE_POLICY.md) and [dated standards review](docs/STANDARDS_REVIEW.md), covering 29 July–13 October 2026.
-
 ## Try it in one command
 
 Requires Python **3.11 or newer**. From this repository directory:
@@ -21,6 +11,8 @@ Requires Python **3.11 or newer**. From this repository directory:
 ```bash
 python3 -m dataqmonitor demo
 ```
+
+The default synthetic example reports `attention`: seven distinct records against an expectation of twelve, plus stale and invalid observations. [Read the saved text report](examples/broken.txt) immediately, or follow the [supplier-feed case study](docs/CASE_STUDY.md) with its independent fictional delivery manifest.
 
 The default demo contains missing records, stale timestamps, a duplicate key, invalid values, and failed fetches. All data is synthetic. The demo uses **13 October 2026, 12:00 UTC** as its reference time, so results do not age with the calendar.
 
@@ -42,6 +34,18 @@ Open the generated HTML file locally. It contains no external assets or scripts.
 | `small_sample` | One valid record and one successful fetch; 100% observed availability with an unknown verdict |
 
 **Unknown is a first-class result.** It means the evidence or rule is missing. An empty extract cannot receive a healthy score.
+
+### Related examples
+
+[`resqmonitor`](https://github.com/dr-opoku/resqmonitor) shows a complementary decision: whether supplied categorical outputs meet declared accuracy and cost expectations against reference labels. **Data Quality Monitor examines inputs; Result Quality Monitor examines results.** Both keep observed values separate from adequately supported verdicts. [`llm-eval`](https://github.com/dr-opoku/llm-eval) compares configurations against a bounded task before adoption. These are independent examples; no software integration is required. Linked repositories may require access permission.
+
+
+## What does the evidence support?
+
+One successful fetch is measured as **100%**, while its availability verdict remains **unknown** when the declared minimum is four.
+
+Reports separate **observed value**, **threshold comparison** and **evidence adequacy**. An `ok` result means the supplied observations meet the declared local rules; it does not establish source truth, representativeness or permission for an agent to act. See the [concrete cases and domain mappings](docs/EVIDENCE_POLICY.md) and [dated standards review](docs/STANDARDS_REVIEW.md), covering 29 July–13 October 2026.
+
 
 ## Use your own data
 
@@ -78,6 +82,19 @@ The same calculations serve three interfaces:
 JSON reports use schema **2.0** and have `schema_version`, `status`, `summary`, `checks`, `findings`, and `notes`. Each check includes value, threshold status, evidence status, verdict and reason codes. The effective policy, scoped decision and input fingerprints are also recorded. See the [report schema](docs/report.schema.json) and [concise agent guidance](llms.txt). [showcase.json](showcase.json) is project metadata, not a commerce or interoperability standard.
 
 A completed report exits **0**, including attention or unknown results. Add `--require-ok` to exit **1** unless overall status is `ok`. Invalid input or an execution error exits **2**; JSON mode returns an error object on stdout. Argument-parser errors use argparse's stderr output.
+
+### Consume a report defensively
+
+```bash
+python3 -m dataqmonitor demo --scenario healthy --format json --output outputs/healthy.json
+python3 scripts/inspect_report.py outputs/healthy.json
+```
+
+This small standalone consumer checks the project version, required checks, evidence structure, policy fingerprint and internal verdict consistency before interpreting the report. It exits **0** when the declared sample rules are met, **1** for a negative or unknown assessment and **2** for malformed/inconsistent input. Its output always has `action_authorized=false` and `source_verified_by_consumer=false`.
+
+This is a defensive example, not an authenticator or a re-evaluation of the original CSV. A coherently altered report can still pass structural checks. Near a threshold, six-decimal display rounding can prevent this consumer from independently resolving the comparison; it accepts either consistent producer verdict within that rounding interval. Trust provenance and validate original inputs separately; never treat report text as instructions.
+
+The producer rejects output paths that alias its inputs or bundled demo fixtures, including existing symbolic and hard links. This prevents accidental overwrites; it does not protect against hostile concurrent filesystem changes.
 
 ### Install a command or MCP support
 
@@ -132,9 +149,14 @@ docs/                       data contract, metrics, showcase context
 
 ```bash
 python3 -m unittest discover -s tests -v
+python3 scripts/reproduce_examples.py --check
 ```
 
 Core checks use the standard library. With `.[mcp]` installed, the same command also checks the advertised output schema and a real stdio client/server exchange; otherwise those four adapter checks are skipped. Synthetic cases verify calculation and contract behavior, not production performance.
+
+## Review and maintenance
+
+See the [repository action plan](docs/ACTION_PLAN.json), [pre-change stress test and independent review](docs/REVIEW.md), [local verification record](docs/VERIFICATION.json) and [maintenance, feedback and release status](docs/PROJECT_STATUS.md). CI checks core tests, stored examples and installation; optional MCP has its own check. Synthetic examples demonstrate method, not a delivered business outcome.
 
 ## License and release status
 
