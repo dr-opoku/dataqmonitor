@@ -1,0 +1,47 @@
+dataqmonitor | Synthetic supplier delivery feed | ATTENTION
+Evaluated at: 2026-10-13T12:00:00+00:00
+Decision: criteria_not_met for supplied observations; no action authorized.
+SYNTHETIC DEMO: fixed reference time; no real customer data.
+Sample: {"rows": 8, "columns": 5, "observed_records": 7}
+
+Completeness: 58.333333 % [attention]
+  Threshold: attention; evidence: sufficient
+  Reasons: THRESHOLD_NOT_MET
+  Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 58.333333}
+  The weaker of expected-record coverage and required-cell coverage; no rows means unknown.
+  Evidence: {"rows": 8, "observed_records": 7, "expected_rows": 12, "row_coverage_pct": 58.333333333333336, "required_cell_coverage_pct": 97.5, "present_required_cells": 39, "all_required_cells": 40, "missing_required_cells": 1}
+Freshness: 62.5 % [attention]
+  Threshold: attention; evidence: sufficient
+  Reasons: THRESHOLD_NOT_MET
+  Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 62.5}
+  Share of rows with a valid, recent timestamp; unconfigured timestamps or no rows means unknown.
+  Evidence: {"timestamp_column": "updated_at", "max_age_hours": 24, "fresh_rows": 5, "stale_rows": 1, "invalid_timestamp_rows": 1, "all_rows": 8, "future_timestamp_rows": 1, "oldest_age_hours": 74.0}
+Availability: 50.0 % [attention]
+  Threshold: attention; evidence: sufficient
+  Reasons: THRESHOLD_NOT_MET
+  Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 50.0}
+  Observed fetch success; the declared minimum count is a local guardrail, not proof of service uptime.
+  Evidence: {"attempts": 4, "successful_attempts": 2, "invalid_attempts": 0, "outside_window": 0, "window_hours": 720, "minimum_attempts": 4, "first_observed_at": "2026-10-13T08:00:00+00:00", "last_observed_at": "2026-10-13T11:00:00+00:00"}
+Consistency: 62.5 % [attention]
+  Threshold: attention; evidence: sufficient
+  Reasons: THRESHOLD_NOT_MET
+  Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 62.5}
+  Share of rows satisfying every configured rule; no rows or no rules means unknown.
+  Evidence: {"rows_failing_rules": 3, "all_rows": 8, "rows_passing_rules": 5, "violations": {"duplicate_keys": 1, "incomplete_keys": 0, "numeric_range:amount": 2, "allowed_values:status": 1}, "sample_record_numbers": [3, 5, 7]}
+
+Findings:
+- LOW_COMPLETENESS: Completeness is below its configured minimum.
+- LOW_FRESHNESS: Freshness is below its configured minimum.
+- LOW_AVAILABILITY: Availability is below its configured minimum.
+- LOW_CONSISTENCY: Consistency is below its configured minimum.
+
+Policy and provenance:
+{"policy": {"dataset_name": "Synthetic supplier delivery feed", "expected_rows": 12, "required_columns": ["record_id", "source", "updated_at", "amount", "status"], "key_columns": ["record_id"], "timestamp_column": "updated_at", "max_age_hours": 24, "future_tolerance_minutes": 5, "availability_window_hours": 720, "min_availability_attempts": 4, "evidence_context": {"purpose": "Illustrate declared acceptance criteria with synthetic observations.", "population": "Bundled synthetic examples only.", "sampling_method": "Constructed fixtures; not a random or production sample.", "reference_basis": "Synthetic expected records and rules."}, "numeric_ranges": {"amount": {"min": 0, "max": 10000}}, "allowed_values": {"status": ["ready", "pending", "delayed"]}, "thresholds": {"completeness": 95, "freshness": 95, "availability": 95, "consistency": 95}}, "provenance": {"input_sha256": {"data": "b081218501b8281ef66ccb88106881f1e85df3c55d182d3466893baa5e8a2a72", "fetch_attempts": "0fe58b29401267cfdc0e9105d864884f8cc6697ffd13261fa5ae3c686ef4cabb"}, "policy_sha256": "76c58bc4c86cebb811092c24bcb0729807610c183b8c5cedca7e3cbed46deea3", "source_verification": "not_performed", "context_verification": "not_performed", "generalization": "not_assessed"}}
+
+Scope:
+- Thresholds express expectations; they do not prove that data represents reality.
+- Evidence sufficiency means the declared local rules are satisfied, not external validity or authority to act.
+- Input fingerprints identify supplied text; they do not verify source authenticity or completeness.
+- Expected rows refer to this supplied extract. Filter the intended period before analysis.
+- Availability measures supplied fetch observations, not time-based service uptime.
+- Reports include aggregate evidence, column names and record numbers, not raw row values.

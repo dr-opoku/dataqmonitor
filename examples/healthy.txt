@@ -1,0 +1,41 @@
+dataqmonitor | Synthetic supplier delivery feed | OK
+Evaluated at: 2026-10-13T12:00:00+00:00
+Decision: criteria_met for supplied observations; no action authorized.
+SYNTHETIC DEMO: fixed reference time; no real customer data.
+Sample: {"rows": 12, "columns": 5, "observed_records": 12}
+
+Completeness: 100.0 % [ok]
+  Threshold: ok; evidence: sufficient
+  Reasons: None under the declared policy
+  Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 100.0}
+  The weaker of expected-record coverage and required-cell coverage; no rows means unknown.
+  Evidence: {"rows": 12, "observed_records": 12, "expected_rows": 12, "row_coverage_pct": 100, "required_cell_coverage_pct": 100.0, "present_required_cells": 60, "all_required_cells": 60, "missing_required_cells": 0}
+Freshness: 100.0 % [ok]
+  Threshold: ok; evidence: sufficient
+  Reasons: None under the declared policy
+  Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 100.0}
+  Share of rows with a valid, recent timestamp; unconfigured timestamps or no rows means unknown.
+  Evidence: {"timestamp_column": "updated_at", "max_age_hours": 24, "fresh_rows": 12, "stale_rows": 0, "invalid_timestamp_rows": 0, "all_rows": 12, "future_timestamp_rows": 0, "oldest_age_hours": 4.0}
+Availability: 100.0 % [ok]
+  Threshold: ok; evidence: sufficient
+  Reasons: None under the declared policy
+  Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 100.0}
+  Observed fetch success; the declared minimum count is a local guardrail, not proof of service uptime.
+  Evidence: {"attempts": 4, "successful_attempts": 4, "invalid_attempts": 0, "outside_window": 0, "window_hours": 720, "minimum_attempts": 4, "first_observed_at": "2026-10-13T08:00:00+00:00", "last_observed_at": "2026-10-13T11:00:00+00:00"}
+Consistency: 100.0 % [ok]
+  Threshold: ok; evidence: sufficient
+  Reasons: None under the declared policy
+  Rule: {"minimum": 95, "maximum": null, "basis": "point_estimate", "assessment_value": 100.0}
+  Share of rows satisfying every configured rule; no rows or no rules means unknown.
+  Evidence: {"rows_failing_rules": 0, "all_rows": 12, "rows_passing_rules": 12, "violations": {"duplicate_keys": 0, "incomplete_keys": 0, "numeric_range:amount": 0, "allowed_values:status": 0}, "sample_record_numbers": []}
+
+Policy and provenance:
+{"policy": {"dataset_name": "Synthetic supplier delivery feed", "expected_rows": 12, "required_columns": ["record_id", "source", "updated_at", "amount", "status"], "key_columns": ["record_id"], "timestamp_column": "updated_at", "max_age_hours": 24, "future_tolerance_minutes": 5, "availability_window_hours": 720, "min_availability_attempts": 4, "evidence_context": {"purpose": "Illustrate declared acceptance criteria with synthetic observations.", "population": "Bundled synthetic examples only.", "sampling_method": "Constructed fixtures; not a random or production sample.", "reference_basis": "Synthetic expected records and rules."}, "numeric_ranges": {"amount": {"min": 0, "max": 10000}}, "allowed_values": {"status": ["ready", "pending", "delayed"]}, "thresholds": {"completeness": 95, "freshness": 95, "availability": 95, "consistency": 95}}, "provenance": {"input_sha256": {"data": "1da058a9cb3aa226a6cad9f2044adc700e2af734d4159f9f4f8d99ea08054096", "fetch_attempts": "b2e5072e83067d3219ba6332f62d39b7b676ca44d7577659947d29f748494e64"}, "policy_sha256": "76c58bc4c86cebb811092c24bcb0729807610c183b8c5cedca7e3cbed46deea3", "source_verification": "not_performed", "context_verification": "not_performed", "generalization": "not_assessed"}}
+
+Scope:
+- Thresholds express expectations; they do not prove that data represents reality.
+- Evidence sufficiency means the declared local rules are satisfied, not external validity or authority to act.
+- Input fingerprints identify supplied text; they do not verify source authenticity or completeness.
+- Expected rows refer to this supplied extract. Filter the intended period before analysis.
+- Availability measures supplied fetch observations, not time-based service uptime.
+- Reports include aggregate evidence, column names and record numbers, not raw row values.

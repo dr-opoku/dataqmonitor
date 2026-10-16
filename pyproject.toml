@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dataqmonitor"
+version = "0.2.0"
+description = "Local CSV data-quality checks with explicit evidence and offline demos"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "dr-opoku"}]
+dependencies = []
+
+[project.optional-dependencies]
+mcp = ["mcp>=2.3,<3"]
+
+[project.scripts]
+dataqmonitor = "dataqmonitor.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/dr-opoku/dataqmonitor"
+
+[tool.setuptools.packages.find]
+include = ["dataqmonitor*"]
+
+[tool.setuptools.package-data]
+dataqmonitor = ["fixtures/*.csv", "fixtures/*.json"]

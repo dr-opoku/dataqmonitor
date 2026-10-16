@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0",
+  "repository": "dataqmonitor",
+  "baseline_commit": "c34ed58fb3057df7c4a482cbd801fd6602605654",
+  "date": "2026-10-15",
+  "state": "implemented_and_locally_verified",
+  "goal": "A small, honest, easy-to-inspect professional reference for coordinating evidence-based AI and organizational work, without disclosing private platform IP.",
+  "profile_context": "The owner seeks cross-corporate project/program and transformation assignments including AI. These repositories can demonstrate concrete technical judgment and evidence discipline, not establish unverified CV achievements.",
+  "actions": [
+    {
+      "id": "case",
+      "action": "Turn the existing broken/healthy synthetic supplier fixtures into a before/after case with saved JSON/text/HTML reports, exact counts, explicitly fictional expected-population rationale, error causes, owner, repair and decision consequence.",
+      "acceptance": "The existing configured expectation of 12 deliveries is explained by a fictional manifest added after the CSV fixtures. Do not claim independent or prospective establishment. Explain upstream ownership before real assessment, and count-versus-identity limitations.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "regressions",
+      "action": "Stress missing/invalid/future timestamps, duplicate IDs, unconfigured rules, single fetch, HTML escaping, CLI invalid input and output/input path collisions; fix demonstrated defects and preserve existing semantics.",
+      "acceptance": "A 100% one-attempt fetch stays unknown; no input may be overwritten by its own output path, including symlink aliases.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "entry",
+      "action": "Put one safe offline command and a concise expected result near the top; link a readable saved report and a reproducible case study.",
+      "acceptance": "A reader can understand purpose, run command, expected verdict and limits in the first screen.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "consumer",
+      "action": "Add a runnable standard-library JSON report consumer with fail-closed structural checks, distinct error/negative/unknown/sample-met outcomes, tests and an explicit no-action-authority output.",
+      "acceptance": "Exit 0 only for structurally consistent declared sample eligibility, exit 1 for negative/unknown, exit 2 for invalid/error reports. No exit status grants action authority; no source authenticity or underlying-data recomputation is performed.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "navigation",
+      "action": "Use Markdown links in llms.txt, consistent license-pending wording and a prominent modest cross-reference to all three independent showcases; maintain AGENTS.md and project-local showcase.json.",
+      "acceptance": "No invented interoperability standard, purchase permission, software integration or production claim.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "verification",
+      "action": "Add offline CI for Python 3.11 and 3.13, tests for core/CLI/consumer and deterministic example reproduction. Keep optional MCP tests separate and visible.",
+      "acceptance": "No model or credentials required in default CI; read-only token permissions; local test counts and skipped tests reported honestly.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "professional",
+      "action": "Describe the demonstrated work: requirements, explicit decision rules, evidence boundaries, implementation and responsible next steps. Add short support/contribution/security guidance and maintenance scope.",
+      "acceptance": "No unverified CV achievements, customer outcomes, enterprise readiness or commercial demand claims.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "rights",
+      "action": "Keep license unselected; document the owner decisions needed for noncommercial/research/procurement use and future commercial terms. Do not create a LICENSE, checkout, release, price or visibility change.",
+      "acceptance": "No implicit free-use or redistribution grant and no claim that source availability is open source.",
+      "status": "documented_owner_decision_pending"
+    },
+    {
+      "id": "reviewed_repairs",
+      "action": [
+        "Protect input/config/attempt files from output collisions, including symbolic and hard links.",
+        "Add deterministic supplier case and explicitly fictional ID manifest documenting an existing premise; explain count-versus-identity limitation.",
+        "Provide defensive consumer, short entry, linked navigation and reproducible tests."
+      ],
+      "acceptance": "Regression tests reproduce the original defects and exercise the repaired behavior; all input files remain byte-identical after refused collisions.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "second_review_closure",
+      "action": "Resolve verified AGY/Claude findings in the adjudication table, add focused regressions, regenerate affected synthetic reports and verify core, optional MCP and packaging.",
+      "acceptance": "No missing-cost-as-zero evidence, no extra human-output rounding, bounded decoder input errors, accurate fictional chronology and recorded rejected suggestions. Keep all rights unchanged.",
+      "status": "implemented_and_locally_verified"
+    }
+  ],
+  "pre_edit_gate": "Record baseline tests and one independent Gemini 3.8 Flash review of this plan and supplied source before repository edits. Revise actions against concrete findings.",
+  "publication_gate": [
+    "Owner-selected license and contribution rights",
+    "Owner-approved visibility and release",
+    "Separate evidence for any real customer, commercial or production claim"
+  ],
+  "reference_sources": [
+    "https://github.com/promptfoo/promptfoo",
+    "https://github.com/evidentlyai/evidently",
+    "https://github.com/steipete/oracle",
+    "https://agents.md/"
+  ],
+  "reference_interpretation": "Adopt visible examples, short reproducible entry points, tests and explicit agent guidance. These sources do not prove why users award stars or validate this owner's competence.",
+  "stress_test_decision": {
+    "repository": "dataqmonitor",
+    "decided_at": "2026-10-15T06:35:13.130025+00:00",
+    "pre_edit_gate": "passed",
+    "repository_unchanged_at_gate": true,
+    "baseline_commit": "c34ed58fb3057df7c4a482cbd801fd6602605654",
+    "review": {
+      "requested_model": "gemini-3.8-flash-high",
+      "started_at": "2026-10-15T06:27:07.552400+00:00",
+      "finished_at": "2026-10-15T06:30:42.102271+00:00",
+      "exit_code": 0,
+      "repository_files_unchanged": true,
+      "filesystem_protection": "All three repository directories mounted read-only for reviewer process.",
+      "review_scope": "One plan/source-packet review, not execution or independent source authentication."
+    },
+    "accepted": [
+      "Protect input/config/attempt files from output collisions, including symbolic and hard links.",
+      "Add deterministic supplier case and independent fictional ID manifest; explain count-versus-identity limitation.",
+      "Provide defensive consumer, short entry, linked navigation and reproducible tests."
+    ],
+    "rejected_or_bounded": [
+      "No global ban on the approved third repository name llm-eval: naming restrictions apply to the two monitor names.",
+      "No empty-data repair: _support.check already supplies NO_OBSERVATIONS for absent values.",
+      "No blanket TypeError/KeyError catch: timestamp/CSV validation already rejects the cited inputs.",
+      "No new evaluation permission: rights remain unselected; wording must not grant a license."
+    ],
+    "limits": [
+      "One source-packet plan review; reviewer did not execute tests. Helper implementations and some fixtures were outside the packet; findings were checked against the actual source.",
+      "AGY was requested with selector gemini-3.8-flash-high; no independent attestation of the backend model."
+    ]
+  },
+  "verification": "docs/VERIFICATION.json",
+  "followup_stress_test": {
+    "date": "2026-10-15T09:06:04.055004+00:00",
+    "baseline_commit": "4672f1273efb63fd8e3bbb077d7d6fae973f3c62",
+    "pre_edit_gate": "passed",
+    "tracked_files_unchanged_at_gate": true,
+    "reviews": {
+      "agy": {
+        "exit_code": 0,
+        "requested_model": "gemini-3.8-flash-high",
+        "started_at": "2026-10-15T08:57:51.700472+00:00",
+        "finished_at": "2026-10-15T09:01:51.790807+00:00",
+        "repository_unchanged": true,
+        "scope": "Read-only static source/plan review; test source and saved example reports omitted; no execution or independent backend attestation."
+      },
+      "claude": {
+        "exit_code": 0,
+        "requested_model": "claude-sonnet-5-5",
+        "provider_interface": "claude",
+        "started_at": "2026-10-15T08:57:10.677589+00:00",
+        "finished_at": "2026-10-15T08:58:30.282125+00:00",
+        "repository_unchanged": true,
+        "filesystem_protection": "All showcase directories mounted read-only.",
+        "scope": "Static supplied-source review; model tools disabled by request and Claude tool set empty; no independent backend attestation."
+      }
+    },
+    "adjudication": [
+      {
+        "id": "C1",
+        "finding": "Medium: manifest described as prospectively independent.",
+        "disposition": "Accepted with corrected chronology",
+        "reason": "The 12-row configuration and CSV fixtures predate the explanatory manifest. CASE_STUDY, manifest and current plan now say so. The identity-reconciliation limitation stays explicit.",
+        "verification": "tests/test_case_study.py"
+      },
+      {
+        "id": "C2",
+        "finding": "Low: current review decisions not inspectable in the repository.",
+        "disposition": "Accepted",
+        "reason": "Append this per-finding record and current plan; preserve the earlier review as history.",
+        "verification": "docs/REVIEW.md; docs/ACTION_PLAN.json"
+      },
+      {
+        "id": "C3",
+        "finding": "Low: own-data command uses synthetic packaged policy.",
+        "disposition": "Accepted",
+        "reason": "Point to an edited local copy and name the keys, including evidence_context.",
+        "verification": "README.md, Use your own data"
+      },
+      {
+        "id": "C4 / G1",
+        "finding": "Low: unreachable consumer branch and unused Wilson vocabulary.",
+        "disposition": "Accepted / bounded",
+        "reason": "Remove the constant alternative branch. Document that current checks emit only point_estimate; no new statistical metric or contract break.",
+        "verification": "tests/test_stress.py; tests/test_review_regressions.py"
+      },
+      {
+        "id": "C5",
+        "finding": "Low: unspecified operating-system support.",
+        "disposition": "Bounded",
+        "reason": "State verified Linux and POSIX commands; Windows unverified. Do not claim portability based solely on standard-library use.",
+        "verification": "README.md"
+      },
+      {
+        "id": "G2",
+        "finding": "Low: empty output path allegedly raises an unhandled OSError.",
+        "disposition": "Rejected",
+        "reason": "Reproduced against baseline: argparse creates Path(\".\"); the existing OSError handler returns structured INVALID_INPUT and exit 2. Whitespace is a valid filename on the verified platform. No speculative validation patch.",
+        "verification": "Pre-edit CLI reproduction; dataqmonitor/__main__.py"
+      },
+      {
+        "id": "G3",
+        "finding": "Low: two-decimal human display can obscure a threshold.",
+        "disposition": "Accepted with stronger remedy",
+        "reason": "Retain the six-decimal JSON check value in text/HTML, rather than merely documenting extra rounding. No threshold change.",
+        "verification": "tests/test_review_regressions.py"
+      },
+      {
+        "id": "X1",
+        "finding": "Confirmed in sibling review: excessively nested config escapes the input-error contract.",
+        "disposition": "Accepted after local reproduction",
+        "reason": "Reproduced RecursionError on a 100,000-level, sub-limit JSON object. Convert only decoder RecursionError to ValueError.",
+        "verification": "tests/test_review_regressions.py"
+      }
+    ],
+    "limits": [
+      "Two static source/plan reviews, not independently executed tests.",
+      "AGY packet omitted tests and saved example JSON; Claude packet included test source, not test execution.",
+      "Requested model selectors are recorded; backend identity is not independently attested.",
+      "An initial AGY invocation failed before model execution; corrected invocation completed. No truncated final response in this round.",
+      "Targeted reproductions and verification were performed separately by the implementing agent."
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dataqmonitor — Synthetic supplier delivery feed</title><style>
+body{font:16px/1.6 system-ui,sans-serif;color:#172b43;background:#f3f6fa;margin:0}
+main{max-width:1100px;margin:auto;padding:32px 20px}h1{line-height:1.2;margin-bottom:8px}
+h2{font-size:1.1rem;margin:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+article,section{background:white;border:1px solid #ccd6e3;border-radius:12px;padding:20px;margin-top:20px}
+.value{font-size:2rem;font-weight:700;margin:12px 0}.badge{display:inline-block;padding:3px 10px;border-radius:6px;font-weight:700}
+.ok{background:#d7f1df;color:#174c2d}.attention{background:#fff0c9;color:#614100}.unknown{background:#e7edf5;color:#35455e}
+.demo{font-weight:600;color:#5a3a00}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem}
+summary{cursor:pointer;text-decoration:underline}footer{margin-top:24px;color:#425570}@media print{body{background:white}article{break-inside:avoid}}
+</style></head><body><main><header><h1>dataqmonitor — Synthetic supplier delivery feed</h1>
+<p>Overall status: <strong>UNKNOWN</strong> · 2026-10-13T12:00:00+00:00</p>
+<p>undetermined for supplied observations. No action authorized.</p>
+<p class="demo">Synthetic demonstration · fixed reference time</p><p>{&quot;rows&quot;: 0, &quot;columns&quot;: 5, &quot;observed_records&quot;: 0}</p></header><div class="grid"><article><h2>Completeness</h2><p class="value">Unknown</p><p class="badge unknown">UNKNOWN</p><p>Threshold: <strong>unknown</strong> · Evidence: <strong>missing</strong></p><p>NO_OBSERVATIONS</p><p>The weaker of expected-record coverage and required-cell coverage; no rows means unknown.</p><p>Rule: {&quot;minimum&quot;: 95, &quot;maximum&quot;: null, &quot;basis&quot;: &quot;point_estimate&quot;, &quot;assessment_value&quot;: null}</p><details><summary>Calculation evidence</summary><pre>{
+  &quot;rows&quot;: 0,
+  &quot;observed_records&quot;: 0,
+  &quot;expected_rows&quot;: 12,
+  &quot;row_coverage_pct&quot;: null,
+  &quot;required_cell_coverage_pct&quot;: null,
+  &quot;present_required_cells&quot;: 0,
+  &quot;all_required_cells&quot;: 0,
+  &quot;missing_required_cells&quot;: 0
+}</pre></details></article><article><h2>Freshness</h2><p class="value">Unknown</p><p class="badge unknown">UNKNOWN</p><p>Threshold: <strong>unknown</strong> · Evidence: <strong>missing</strong></p><p>NO_OBSERVATIONS</p><p>Share of rows with a valid, recent timestamp; unconfigured timestamps or no rows means unknown.</p><p>Rule: {&quot;minimum&quot;: 95, &quot;maximum&quot;: null, &quot;basis&quot;: &quot;point_estimate&quot;, &quot;assessment_value&quot;: null}</p><details><summary>Calculation evidence</summary><pre>{
+  &quot;timestamp_column&quot;: &quot;updated_at&quot;,
+  &quot;max_age_hours&quot;: 24,
+  &quot;fresh_rows&quot;: 0,
+  &quot;stale_rows&quot;: 0,
+  &quot;invalid_timestamp_rows&quot;: 0,
+  &quot;all_rows&quot;: 0,
+  &quot;future_timestamp_rows&quot;: 0,
+  &quot;oldest_age_hours&quot;: null
+}</pre></details></article><article><h2>Availability</h2><p class="value">Unknown</p><p class="badge unknown">UNKNOWN</p><p>Threshold: <strong>unknown</strong> · Evidence: <strong>missing</strong></p><p>NO_OBSERVATIONS</p><p>Observed fetch success; the declared minimum count is a local guardrail, not proof of service uptime.</p><p>Rule: {&quot;minimum&quot;: 95, &quot;maximum&quot;: null, &quot;basis&quot;: &quot;point_estimate&quot;, &quot;assessment_value&quot;: null}</p><details><summary>Calculation evidence</summary><pre>{
+  &quot;attempts&quot;: 0,
+  &quot;successful_attempts&quot;: 0,
+  &quot;invalid_attempts&quot;: 0,
+  &quot;outside_window&quot;: 0,
+  &quot;window_hours&quot;: 720,
+  &quot;minimum_attempts&quot;: 4,
+  &quot;first_observed_at&quot;: null,
+  &quot;last_observed_at&quot;: null
+}</pre></details></article><article><h2>Consistency</h2><p class="value">Unknown</p><p class="badge unknown">UNKNOWN</p><p>Threshold: <strong>unknown</strong> · Evidence: <strong>missing</strong></p><p>NO_OBSERVATIONS</p><p>Share of rows satisfying every configured rule; no rows or no rules means unknown.</p><p>Rule: {&quot;minimum&quot;: 95, &quot;maximum&quot;: null, &quot;basis&quot;: &quot;point_estimate&quot;, &quot;assessment_value&quot;: null}</p><details><summary>Calculation evidence</summary><pre>{
+  &quot;rows_failing_rules&quot;: 0,
+  &quot;all_rows&quot;: 0,
+  &quot;rows_passing_rules&quot;: 0,
+  &quot;violations&quot;: {
+    &quot;duplicate_keys&quot;: 0,
+    &quot;incomplete_keys&quot;: 0,
+    &quot;numeric_range:amount&quot;: 0,
+    &quot;allowed_values:status&quot;: 0
+  },
+  &quot;sample_record_numbers&quot;: []
+}</pre></details></article></div>
+<section><h2>Findings</h2><ul><li>No threshold findings. Check unknown measurements before drawing conclusions.</li></ul></section>
+<section><h2>Policy and provenance</h2><details><summary>Declared rules and input fingerprints</summary><pre>{
+  &quot;policy&quot;: {
+    &quot;dataset_name&quot;: &quot;Synthetic supplier delivery feed&quot;,
+    &quot;expected_rows&quot;: 12,
+    &quot;required_columns&quot;: [
+      &quot;record_id&quot;,
+      &quot;source&quot;,
+      &quot;updated_at&quot;,
+      &quot;amount&quot;,
+      &quot;status&quot;
+    ],
+    &quot;key_columns&quot;: [
+      &quot;record_id&quot;
+    ],
+    &quot;timestamp_column&quot;: &quot;updated_at&quot;,
+    &quot;max_age_hours&quot;: 24,
+    &quot;future_tolerance_minutes&quot;: 5,
+    &quot;availability_window_hours&quot;: 720,
+    &quot;min_availability_attempts&quot;: 4,
+    &quot;evidence_context&quot;: {
+      &quot;purpose&quot;: &quot;Illustrate declared acceptance criteria with synthetic observations.&quot;,
+      &quot;population&quot;: &quot;Bundled synthetic examples only.&quot;,
+      &quot;sampling_method&quot;: &quot;Constructed fixtures; not a random or production sample.&quot;,
+      &quot;reference_basis&quot;: &quot;Synthetic expected records and rules.&quot;
+    },
+    &quot;numeric_ranges&quot;: {
+      &quot;amount&quot;: {
+        &quot;min&quot;: 0,
+        &quot;max&quot;: 10000
+      }
+    },
+    &quot;allowed_values&quot;: {
+      &quot;status&quot;: [
+        &quot;ready&quot;,
+        &quot;pending&quot;,
+        &quot;delayed&quot;
+      ]
+    },
+    &quot;thresholds&quot;: {
+      &quot;completeness&quot;: 95,
+      &quot;freshness&quot;: 95,
+      &quot;availability&quot;: 95,
+      &quot;consistency&quot;: 95
+    }
+  },
+  &quot;provenance&quot;: {
+    &quot;input_sha256&quot;: {
+      &quot;data&quot;: &quot;b2f7a8ad6b5e1103cb6976ee665828fb10e002e803399c5e175bb06c01019d62&quot;,
+      &quot;fetch_attempts&quot;: &quot;2842e5527de0095ffb0efb8304e5cdc5b4d0ce6e8b0d7bea5a94c6010d63c176&quot;
+    },
+    &quot;policy_sha256&quot;: &quot;76c58bc4c86cebb811092c24bcb0729807610c183b8c5cedca7e3cbed46deea3&quot;,
+    &quot;source_verification&quot;: &quot;not_performed&quot;,
+    &quot;context_verification&quot;: &quot;not_performed&quot;,
+    &quot;generalization&quot;: &quot;not_assessed&quot;
+  }
+}</pre></details></section>
+<section><h2>What this report establishes</h2><ul><li>Thresholds express expectations; they do not prove that data represents reality.</li><li>Evidence sufficiency means the declared local rules are satisfied, not external validity or authority to act.</li><li>Input fingerprints identify supplied text; they do not verify source authenticity or completeness.</li><li>Expected rows refer to this supplied extract. Filter the intended period before analysis.</li><li>Availability measures supplied fetch observations, not time-based service uptime.</li><li>Reports include aggregate evidence, column names and record numbers, not raw row values.</li></ul></section>
+<footer>Local calculations. No model calls, telemetry, or external page assets.</footer>
+</main></body></html>

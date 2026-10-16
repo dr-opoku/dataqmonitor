@@ -1,0 +1,9 @@
+record_id,source,updated_at,amount,status
+D001,synthetic_supplier,2026-10-13T10:00:00Z,125,ready
+D002,,2026-10-13T10:00:00Z,200,pending
+D003,synthetic_supplier,2026-10-13T10:00:00Z,-12,ready
+D004,synthetic_supplier,2026-10-10T10:00:00Z,300,ready
+D005,synthetic_supplier,not-a-timestamp,not-a-number,unmapped
+D006,synthetic_supplier,2026-10-14T12:00:00Z,450,ready
+D006,synthetic_supplier,2026-10-13T10:00:00Z,490,ready
+D007,synthetic_supplier,2026-10-13T10:00:00Z,700,delayed
