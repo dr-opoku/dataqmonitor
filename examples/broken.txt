@@ -44,4 +44,4 @@ Scope:
 - Input fingerprints identify supplied text; they do not verify source authenticity or completeness.
 - Expected rows refer to this supplied extract. Filter the intended period before analysis.
 - Availability measures supplied fetch observations, not time-based service uptime.
-- Reports include aggregate evidence, column names and record numbers, not raw row values.
+- Reports omit full source rows and record IDs, but include aggregate evidence, column names, record numbers and, when supplied, first/last observed fetch timestamps. Review report metadata before disclosure.

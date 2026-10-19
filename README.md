@@ -77,13 +77,15 @@ See [input and configuration](docs/DATA_FORMAT.md) and [metric definitions](docs
 
 The same calculations serve three interfaces:
 
-- Text for a terminal; JSON for automation; HTML for local report review. Sharing reports containing protected templates requires permission under the [license](LICENSE.md); see [usage guidance](docs/PROJECT_STATUS.md).
+- Text for a terminal; JSON for automation; HTML for local report review. Completed reports, including embedded presentation material, may be shared for noncommercial purposes under section 3 of the [license](LICENSE.md); see [usage guidance](docs/PROJECT_STATUS.md).
 - Python: `from dataqmonitor import analyze`, then `analyze(csv_text, config, attempts_csv=attempts_text, at=reference_time)`.
 - Optional MCP over local stdio, with tools accepting CSV text rather than paths.
 
 JSON reports use schema **2.0** and have `schema_version`, `status`, `summary`, `checks`, `findings`, and `notes`. Each check includes value, threshold status, evidence status, verdict and reason codes. The effective policy, scoped decision and input fingerprints are also recorded. See the [report schema](docs/report.schema.json) and [concise agent guidance](llms.txt). [showcase.json](showcase.json) is project metadata, not a commerce or interoperability standard.
 
 A completed report exits **0**, including attention or unknown results. Add `--require-ok` to exit **1** unless overall status is `ok`. Invalid input or an execution error exits **2**; JSON mode returns an error object on stdout. Argument-parser errors use argparse's stderr output.
+
+Human-readable text reports and handled CLI error messages escape terminal control and formatting characters visibly. JSON retains original strings. This protects terminal presentation, not source authenticity or interpretation of report text as instructions; newlines and tabs remain for layout.
 
 ### Consume a report defensively
 
@@ -162,4 +164,4 @@ See the [repository action plan](docs/ACTION_PLAN.json), [pre-change stress test
 
 ## License and release status
 
-Licensed under the [Noncommercial Local Use License 1.0.0](LICENSE.md): private local noncommercial use and modification are permitted; redistribution requires separate written permission, subject to reserved platform/statutory rights; commercial use requires a separate written license. This is source-available, not open source. See [usage, evaluation and contribution guidance](docs/PROJECT_STATUS.md) and [current publication findings](docs/PUBLICATION_STATUS.md). Repository visibility is a separate owner decision.
+Licensed under the [Noncommercial Local Use License 1.1.0](LICENSE.md): private local noncommercial use and modification are permitted; software redistribution requires separate written permission, subject to reserved platform/statutory rights; completed reports may be copied, displayed and shared for noncommercial purposes under section 3; commercial use requires a separate written license. This is source-available, not open source. See [usage, evaluation and contribution guidance](docs/PROJECT_STATUS.md) and [current publication findings](docs/PUBLICATION_STATUS.md). Repository visibility is a separate owner decision.
