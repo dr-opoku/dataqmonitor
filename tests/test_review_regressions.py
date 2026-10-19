@@ -11,6 +11,25 @@ from dataqmonitor.demo import demo
 from dataqmonitor.report import as_text, as_html
 
 class ReviewRegressionTests(unittest.TestCase):
+    def test_report_note_discloses_observed_fetch_timestamps(self):
+        report = demo('healthy')
+        self.assertIsNotNone(report['checks']['availability']['evidence']['first_observed_at'])
+        notes = ' '.join(report['notes'])
+        self.assertIn('first/last observed fetch timestamps', notes)
+        self.assertNotIn('not raw row values', notes)
+
+    def test_text_escapes_terminal_controls_without_changing_report_data(self):
+        from dataqmonitor.report import as_json
+        report = demo('healthy')
+        payload = 'source\x1b[2J\rFORGED\x9b31m\u202eend'
+        report['dataset'] = payload
+        rendered = as_text(report)
+        for control in ('\x1b', '\r', '\x9b', '\u202e'):
+            self.assertNotIn(control, rendered)
+        self.assertIn('\\x1b[2J', rendered)
+        self.assertEqual(json.loads(as_json(report))['dataset'], payload)
+        self.assertIn('\nEvaluated at:', rendered)
+
     def test_excessive_config_nesting_is_an_input_error(self):
         text = '{"x":' + '[' * 100000 + '0' + ']' * 100000 + '}'
         with self.assertRaisesRegex(ValueError, 'nesting'):
