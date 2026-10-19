@@ -4,6 +4,8 @@
 
 A small, local monitor for completeness, freshness, observed fetch availability, and rule consistency. It turns a supplied extract into a readable report with counts and explicit thresholds. No AI model, account, database, or network connection is needed for the core tool.
 
+**Usage:** private local noncommercial use is permitted under the [license](LICENSE.md). Business evaluation for a commercial application requires separate written permission; see [usage guidance](docs/PROJECT_STATUS.md).
+
 ## Try it in one command
 
 Requires Python **3.11 or newer**. Verified on Linux; the installation commands below use POSIX paths. Windows behavior has not been verified. From this repository directory:
@@ -75,7 +77,7 @@ See [input and configuration](docs/DATA_FORMAT.md) and [metric definitions](docs
 
 The same calculations serve three interfaces:
 
-- Text for a terminal; JSON for automation; HTML for sharing a local report.
+- Text for a terminal; JSON for automation; HTML for local report review. Sharing reports containing protected templates requires permission under the [license](LICENSE.md); see [usage guidance](docs/PROJECT_STATUS.md).
 - Python: `from dataqmonitor import analyze`, then `analyze(csv_text, config, attempts_csv=attempts_text, at=reference_time)`.
 - Optional MCP over local stdio, with tools accepting CSV text rather than paths.
 
@@ -130,7 +132,7 @@ Tools: `inspect_data(csv_text, config?, attempts_csv?, at?)` and `demonstrate_da
 
 A compact example of translating business expectations into inspectable data gates: what is expected, what was observed, and where a decision lacks evidence. See [showcase context](docs/SHOWCASE.md).
 
-This is a snapshot analyzer, not a scheduler, connector suite, data catalog, or proof of factual correctness. Thresholds are user expectations, not universal quality standards. Fetch success is not time-based uptime. Reports contain counts, column names, and record numbers; they do not include raw row values. Use synthetic data when sharing examples.
+This is a snapshot analyzer, not a scheduler, connector suite, data catalog, or proof of factual correctness. Thresholds are user expectations, not universal quality standards. Fetch success is not time-based uptime. Reports contain counts, column names and record numbers, rather than full source rows or record IDs. Availability evidence can also include the first and last observed fetch timestamps; review these metadata before disclosure. Use synthetic data when sharing examples.
 
 The code is self-contained and newly written for this repository. No private platform implementation is required.
 
@@ -160,4 +162,4 @@ See the [repository action plan](docs/ACTION_PLAN.json), [pre-change stress test
 
 ## License and release status
 
-Initial showcase implementation. A redistribution license has not yet been selected. License selection is an owner decision before public release. Synthetic examples are illustrative and do not establish production performance.
+Licensed under the [Noncommercial Local Use License 1.0.0](LICENSE.md): private local noncommercial use and modification are permitted; redistribution requires separate written permission, subject to reserved platform/statutory rights; commercial use requires a separate written license. This is source-available, not open source. See [usage, evaluation and contribution guidance](docs/PROJECT_STATUS.md) and [current publication findings](docs/PUBLICATION_STATUS.md). Repository visibility is a separate owner decision.

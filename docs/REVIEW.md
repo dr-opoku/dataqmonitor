@@ -1,5 +1,7 @@
 # Showcase stress review — 15 October 2026
 
+**Status update — 19 October 2026:** this document records the earlier review. The owner-selected license is now included as [LICENSE.md](../LICENSE.md); earlier licensing remarks describe the historical review scope. See [current findings and corrections](PUBLICATION_STATUS.md) and [usage guidance](PROJECT_STATUS.md).
+
 ## Purpose and sequence
 
 Improve visible usefulness, first-run clarity, evidence discipline and professional reference value. The existing source was inspected, baseline tests and adversarial probes were recorded, and the proposed plan was externally reviewed **before repository changes**. The baseline commit was `c34ed58fb3057df7c4a482cbd801fd6602605654`.
@@ -19,7 +21,7 @@ The reviewer assessed a curated plan/source packet, not every helper or fixture,
 - No global ban on the approved third repository name llm-eval: naming restrictions apply to the two monitor names.
 - No empty-data repair: _support.check already supplies NO_OBSERVATIONS for absent values.
 - No blanket TypeError/KeyError catch: timestamp/CSV validation already rejects the cited inputs.
-- No new evaluation permission: rights remain unselected; wording must not grant a license.
+- Historical review decision: do not invent evaluation permission before an owner-selected license is supplied. Current permissions are recorded in LICENSE.md.
 
 ## International examples informing presentation
 
@@ -42,7 +44,7 @@ The report producer compares unrounded measurements and displays six decimals. T
 
 See [verification results](VERIFICATION.json), [the action plan](ACTION_PLAN.json) and [project status](PROJECT_STATUS.md). Automated tests and saved-report replay check the implementation and its declared examples. They cannot establish label truth, representative sampling, model authenticity or deployment suitability.
 
-Licensing, contribution rights, visibility and release remain owner decisions. They are prerequisites for broad reuse, not code defects to resolve by silently assigning a license.
+At the time of this review, licensing, contribution rights, visibility and release were owner decisions. The license has since been supplied; current permissions and remaining policy choices are recorded in [project status](PROJECT_STATUS.md).
 
 ## Second pre-edit review — 15 October 2026
 
