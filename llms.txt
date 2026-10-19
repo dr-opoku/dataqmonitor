@@ -25,6 +25,8 @@ Local CSV quality checks. Python >=3.11. No runtime dependencies or model calls 
 
 ## Navigation
 
+- [Disclosure review scope, cleanup and limits](docs/DISCLOSURE_REVIEW.md)
+
 - [Start and commands](README.md)
 - [Case study](docs/CASE_STUDY.md)
 - [Evidence limits](docs/EVIDENCE_POLICY.md)
