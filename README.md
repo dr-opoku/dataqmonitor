@@ -2,17 +2,26 @@
 
 **Is this incoming CSV usable enough to move work forward?**
 
-A small, local monitor for completeness, freshness, observed fetch availability, and rule consistency. It turns a supplied extract into a readable report with counts and explicit thresholds. No AI model, account, database, or network connection is needed for the core tool.
+Review completeness, freshness, availability and consistency against your declared rules. Prepare inputs and settings, then import the report produced by the Python program. The checks use supplied observations; they do not establish factual correctness. The core needs no AI model, account, database or network connection.
 
 **Usage:** private local noncommercial use is permitted under the [license](LICENSE.md). Business evaluation for a commercial application requires separate written permission; see [usage guidance](docs/PROJECT_STATUS.md).
 
 ## Browser interface preview
 
-A [static interface mock-up](docs/interface/README.md) illustrates inputs, settings
-and report review for `dataqmonitor`. It is not connected to the Python tool and does
-not run its calculations. Start it locally with the preview guide; use the Python
-quick start below for actual results. The site also contains the other two
-independent interface previews.
+The [online overview](https://monitorsample.opoku.de) explains the three independent
+examples: **Is the input usable? Are the results good enough? Which LLM
+configuration meets the task's requirements?**
+
+The [browser mock-up for dataqmonitor](https://monitorsample.opoku.de/dataqmonitor)
+illustrates inputs, settings and reports. It is not connected to the Python
+program and runs none of its calculations. Run this repository's code locally
+to generate results; use the [local preview guide](docs/interface/README.md) to
+serve the included site snapshot yourself.
+
+**Preview values are synthetic illustrations.** Actual reports must be generated
+in Python. An observed success rate of 100% can still yield an `unknown` verdict
+when the declared evidence requirements are not met. See the
+[interface integration review](docs/interface/REVIEW.md) for the source and checks.
 
 ## Try it in one command
 
